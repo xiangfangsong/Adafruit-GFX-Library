@@ -1547,6 +1547,22 @@ void Adafruit_GFX::invertDisplay(boolean i) {
     // Do nothing, must be subclassed if supported by hardware
 }
 
+//画五角星
+void Adafruit_GFX::drawPentagram(int16_t x, int16_t y, int16_t r, int16_t R, uint16_t color) {
+    startWrite();
+    drawLine(x, y+R, x-sin(PI/4.8)*r, y+cos(PI/4.8)*r, color);
+	drawLine(x-sin(PI/4.8)*r, y+cos(PI/4.8)*r, x-sin(PI/2.4)*R, y+cos(PI/2.4)*R, color);
+	drawLine(x-sin(PI/2.4)*R, y+cos(PI/2.4)*R, x-sin(PI/2.4)*r, y-cos(PI/2.4)*r, color);
+	drawLine(x-sin(PI/2.4)*r, y-cos(PI/2.4)*r, x-sin(PI/4.8)*R, y-cos(PI/4.8)*R, color);
+	drawLine(x-sin(PI/4.8)*R, y-cos(PI/4.8)*R, x, y-r, color);
+	drawLine(x, y-r, x+sin(PI/4.8)*R, y-cos(PI/4.8)*R, color);
+	drawLine(x+sin(PI/4.8)*R, y-cos(PI/4.8)*R, x+sin(PI/2.4)*r, y-cos(PI/2.4)*r, color);
+	drawLine(x+sin(PI/2.4)*r, y-cos(PI/2.4)*r, x+sin(PI/2.4)*R, y+cos(PI/2.4)*R, color);
+	drawLine(x+sin(PI/2.4)*R, y+cos(PI/2.4)*R, x+sin(PI/4.8)*r, y+cos(PI/4.8)*r, color);
+	drawLine(x+sin(PI/4.8)*r, y+cos(PI/4.8)*r, x, y+R, color);
+    endWrite();
+}
+
 /***************************************************************************/
 
 /**************************************************************************/
